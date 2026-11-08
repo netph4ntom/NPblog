@@ -6,19 +6,19 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@hasSection('title') @yield('title') — {{ config('app.name') }} @else {{ config('app.name') }} — Berbagi Tulisan &amp; Ide @endif</title>
-    <meta name="description" content="@yield('meta_description', 'SiBlog - Platform berbagi tulisan, gagasan, dan cerita inspiratif.')">
+    <meta name="description" content="@yield('meta_description', 'NPblog - Platform berbagi tulisan, gagasan, dan cerita inspiratif.')">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="@yield('og_type', 'website')">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="@yield('title', config('app.name'))">
-    <meta property="og:description" content="@yield('meta_description', 'SiBlog - Platform berbagi tulisan, gagasan, dan cerita inspiratif.')">
+    <meta property="og:description" content="@yield('meta_description', 'NPblog - Platform berbagi tulisan, gagasan, dan cerita inspiratif.')">
     <meta property="og:image" content="@yield('og_image', asset('images/Logo.jpg'))">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="@yield('title', config('app.name'))">
-    <meta name="twitter:description" content="@yield('meta_description', 'SiBlog - Platform berbagi tulisan, gagasan, dan cerita inspiratif.')">
+    <meta name="twitter:description" content="@yield('meta_description', 'NPblog - Platform berbagi tulisan, gagasan, dan cerita inspiratif.')">
     <meta name="twitter:image" content="@yield('og_image', asset('images/Logo.jpg'))">
 
     <link rel="icon" href="{{ asset('images/Logo.jpg') }}" type="image/jpeg">

@@ -685,7 +685,7 @@
                                 >
                             @else
                                 <div class="thumb-placeholder">
-                                    <span>Si</span>
+                                    <span>NP</span>
                                 </div>
                             @endif
                         </td>

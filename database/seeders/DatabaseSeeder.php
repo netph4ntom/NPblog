@@ -28,9 +28,9 @@ class DatabaseSeeder extends Seeder
         if (Article::count() === 0) {
             Article::create([
                 'user_id' => $user->id,
-                'title' => 'Selamat Datang di SiBlog',
-                'slug' => 'selamat-datang-di-siblog',
-                'body' => "Selamat datang di platform SiBlog!\n\nSiBlog adalah ruang berbagi cerita, gagasan, dan tulisan berkualitas seputar teknologi, pemrograman, dan wawasan kehidupan sehari-hari.\n\nAnda dapat mengelola artikel melalui dashboard admin yang telah disediakan.",
+                'title' => 'Selamat Datang di NPblog',
+                'slug' => 'selamat-datang-di-npblog',
+                'body' => "Selamat datang di platform NPblog!\n\nNPblog adalah ruang berbagi cerita, gagasan, dan tulisan berkualitas seputar teknologi, pemrograman, dan wawasan kehidupan sehari-hari.\n\nAnda dapat mengelola artikel melalui dashboard admin yang telah disediakan.",
             ]);
         }
     }

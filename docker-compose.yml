@@ -3,8 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: siblog-app
-    container_name: siblog-app
+    image: npblog-app
+    container_name: npblog-app
     restart: unless-stopped
     working_dir: /var/www
     volumes:
@@ -12,11 +12,11 @@ services:
     depends_on:
       - db
     networks:
-      - siblog-network
+      - npblog-network
 
   web:
     image: nginx:alpine
-    container_name: siblog-web
+    container_name: npblog-web
     restart: unless-stopped
     ports:
       - "8000:80"
@@ -26,14 +26,14 @@ services:
     depends_on:
       - app
     networks:
-      - siblog-network
+      - npblog-network
 
   db:
     image: mysql:8.0
-    container_name: siblog-db
+    container_name: npblog-db
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE:-SiBlog}
+      MYSQL_DATABASE: ${DB_DATABASE:-npblog}
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-password123}
       MYSQL_PASSWORD: ${DB_PASSWORD:-password123}
       MYSQL_USER: ${DB_USERNAME:-dapit}
@@ -42,10 +42,10 @@ services:
     ports:
       - "3306:3306"
     networks:
-      - siblog-network
+      - npblog-network
 
 networks:
-  siblog-network:
+  npblog-network:
     driver: bridge
 
 volumes:

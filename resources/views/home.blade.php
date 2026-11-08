@@ -602,7 +602,7 @@
                         >
                     @else
                         <div class="card-no-img">
-                            <span class="card-no-img-badge">Si</span>
+                            <span class="card-no-img-badge">NP</span>
                             <span class="card-no-img-label">Editorial</span>
                         </div>
                     @endif

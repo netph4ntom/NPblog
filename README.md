@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="public/images/Logo.jpg" width="100" height="100" alt="SiBlog Logo" style="border-radius: 50%; object-fit: cover;">
+  <img src="public/images/Logo.jpg" width="100" height="100" alt="NPblog Logo" style="border-radius: 50%; object-fit: cover;">
 </p>
 
-<h1 align="center">SiBlog</h1>
+<h1 align="center">NPblog</h1>
 
 <p align="center">
   <strong>Platform Blog & Publikasi Konten Editorial Modern Berbasis Laravel 12</strong>
@@ -20,26 +20,26 @@
 
 ---
 
-## Tentang SiBlog
+## 📖 Tentang NPblog
 
-**SiBlog** adalah platform publikasi blog editorial yang dirancang dengan estetika minimalis, tipografi bernilai tinggi (*editorial design taste*), dan fokus pada kenyamanan membaca (*reading ergonomics*). 
+**NPblog** adalah platform publikasi blog editorial yang dirancang dengan estetika minimalis, tipografi bernilai tinggi (*editorial design taste*), dan fokus pada kenyamanan membaca (*reading ergonomics*). 
 
-Dibangun di atas **Laravel 12**, SiBlog menyajikan perpaduan antara performa backend yang solid, arsitektur Blade yang bersih, dan sistem desain modern menggunakan tipografi **Instrument Serif** dipadukan dengan **DM Sans**.
+Dibangun di atas **Laravel 12**, NPblog menyajikan perpaduan antara performa backend yang solid, arsitektur Blade yang bersih, dan sistem desain modern menggunakan tipografi **Instrument Serif** dipadukan dengan **DM Sans**.
 
 ---
 
-## Fitur Utama
+## ✨ Fitur Utama
 
-### Antarmuka Publik
+### 🌐 Antarmuka Publik
 - **Tipografi & Estetika Editorial**: Tampilan bersih dengan hierarki visual terarah, bebas dari elemen klise (*anti-slop*), berstandar kontras WCAG AA.
 - **Featured Lead Card**: Artikel pertama pada beranda otomatis ditampilkan sebagai kartu sorotan (*lead article*) dengan ringkasan yang proporsional.
-- **Placeholder Duotone Elegan**: Monogram editorial berseni bagi artikel yang belum memiliki unggahan gambar sampul.
+- **Placeholder Duotone Elegan**: Monogram editorial berseni (`NP`) bagi artikel yang belum memiliki unggahan gambar sampul.
 - **Pencarian Artikel Instan**: Filter pencarian judul dan isi artikel dengan penanganan *empty state* yang informatif.
 - **Ergonomi Membaca**: Teks isi artikel berukuran 18px (bobot reguler 400, line-height 1.85) dilengkapi *drop cap* paragraf pertama yang presisi.
 - **Kotak Berbagi Responsif**: Salin tautan satu-klik dengan notifikasi tersalin, serta tombol berbagi langsung ke WhatsApp dan X (Twitter).
 - **Smooth Scroll**: Tombol pill *"Kembali ke Atas"* pada footer.
 
-### Admin Panel & Manajemen Konten (CRUD)
+### 🛡️ Admin Panel & Manajemen Konten (CRUD)
 - **Dashboard Kelola Artikel**: Tabel artikel yang otomatis bertransformasi menjadi **kartu susun vertikal (*stacked touch cards*)** pada perangkat mobile (`< 768px`) tanpa *horizontal scrolling*.
 - **Pembuatan & Pengeditan Artikel**:
   - Live auto-slug generator berbasis judul secara real-time.
@@ -48,14 +48,14 @@ Dibangun di atas **Laravel 12**, SiBlog menyajikan perpaduan antara performa bac
 - **Manajemen Profil**: Pengaturan data akun administrator, pembaruan kata sandi, dan proteksi hapus akun dengan modal konfirmasi.
 - **Keamanan Ketat**: Proteksi CSRF, sanitasi input Blade, autentikasi terisolasi, dan penonaktifan registrasi publik terbuka.
 
-### CI/CD & Infrastruktur
+### 🚀 CI/CD & Infrastruktur
 - **100% Automated Test Coverage**: 34 unit & feature tests mencakup otentikasi, CRUD, otorisasi, pencarian, dan profil.
 - **Docker & Podman Ready**: Konfigurasi multi-container siap pakai (PHP 8.2-FPM, Nginx, MySQL 8.0).
 - **GitHub Actions Pipeline**: CI otomatis (pengujian unit & build asset) serta CD otomatis via SSH ke server target.
 
 ---
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 | Komponen | Teknologi |
 |---|---|
@@ -70,14 +70,14 @@ Dibangun di atas **Laravel 12**, SiBlog menyajikan perpaduan antara performa bac
 
 ---
 
-## Panduan Instalasi & Menjalankan Lokal
+## 🚀 Panduan Instalasi & Menjalankan Lokal
 
 Pastikan Anda telah memasang **Git**, serta **Docker/Podman** ATAU **PHP 8.2 + Composer + Node.js 20+**.
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/username/siblog-project.git
-cd siblog-project
+git clone https://github.com/username/npblog-project.git
+cd npblog-project
 ```
 
 ### 2. Jalankan Aplikasi
@@ -127,7 +127,7 @@ Aplikasi akan aktif di **`http://127.0.0.1:8000`**.
 
 ---
 
-## Kredensial Akun Default
+## 🔐 Kredensial Akun Default
 
 Setelah menjalankan perintah `php artisan db:seed`, akun administrator berikut siap digunakan:
 
@@ -138,7 +138,7 @@ Setelah menjalankan perintah `php artisan db:seed`, akun administrator berikut s
 
 ---
 
-## Menjalankan Automated Tests
+## 🧪 Menjalankan Automated Tests
 
 Aplikasi dilengkapi test suite komprehensif (34 feature & unit tests). Untuk menjalankannya:
 
@@ -166,7 +166,7 @@ Contoh output:
 
 ---
 
-## Otomasi CI/CD (GitHub Actions)
+## 🔄 Otomasi CI/CD (GitHub Actions)
 
 Project ini dilengkapi workflow CI/CD di `.github/workflows/deploy.yml`:
 
@@ -185,14 +185,14 @@ Tambahkan nilai-nilai berikut di menu **Settings → Secrets and variables → A
 - `SERVER_USERNAME`: Username SSH di server (contoh: `ubuntu` atau `root`).
 - `SERVER_SSH_KEY`: Private SSH Key komputer/server deployment.
 - `SERVER_PORT`: Port SSH (default: `22`).
-- `SERVER_PROJECT_PATH`: Lokasi path absolut project di server (contoh: `/var/www/siblog-project`).
+- `SERVER_PROJECT_PATH`: Lokasi path absolut project di server (contoh: `/var/www/npblog-project`).
 
 ---
 
-## Struktur Direktori Utama
+## 📁 Struktur Direktori Utama
 
 ```text
-siblog-project/
+npblog-project/
 ├── .github/workflows/       # Workflow CI/CD GitHub Actions
 │   └── deploy.yml
 ├── app/
@@ -223,6 +223,6 @@ siblog-project/
 
 ---
 
-## Lisensi
+## 📄 Lisensi
 
 Project ini dirilis di bawah lisensi terbuka [MIT License](LICENSE).
