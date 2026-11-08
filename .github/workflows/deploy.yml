@@ -1,0 +1,121 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ─────────────────────────────────────────────────────────────
+  # JOB 1: TESTING & QUALITY (CI)
+  # ─────────────────────────────────────────────────────────────
+  test:
+    name: Test & Build Assets
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, xml, ctype, iconv, intl, pdo, sqlite3, pdo_sqlite, bcmath, gd
+          coverage: none
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache Composer Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install Composer Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: Install NPM Dependencies & Build Assets
+        run: |
+          npm ci
+          npm run build
+
+      - name: Prepare Environment File
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+
+      - name: Run Test Suite
+        run: php artisan test
+
+  # ─────────────────────────────────────────────────────────────
+  # JOB 2: DEPLOY TO SERVER (CD)
+  # ─────────────────────────────────────────────────────────────
+  deploy:
+    name: Deploy to Server
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_PORT || 22 }}
+          script_stop: true
+          script: |
+            echo "Memulai Deployment ke Server..."
+            cd ${{ secrets.SERVER_PROJECT_PATH }}
+
+            echo "Mengambil kode terbaru dari repository..."
+            git fetch origin
+            git reset --hard origin/${{ github.ref_name }}
+
+            # Cek apakah server menggunakan Docker Compose atau Native PHP
+            if [ -f "docker-compose.yml" ] && command -v docker > /dev/null 2>&1; then
+              echo "Menjalankan deployment berbasis Docker Compose..."
+              docker compose down || true
+              docker compose up -d --build
+
+              echo "Menjalankan migrasi dan optimasi cache di container..."
+              docker compose exec -T app php artisan migrate --force
+              docker compose exec -T app php artisan storage:link || true
+              docker compose exec -T app php artisan optimize:clear
+              docker compose exec -T app php artisan optimize
+              docker compose exec -T app php artisan view:cache
+            else
+              echo "Menjalankan deployment native PHP..."
+              composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
+              npm ci
+              npm run build
+
+              php artisan migrate --force
+              php artisan storage:link || true
+              php artisan optimize:clear
+              php artisan optimize
+              php artisan view:cache
+            fi
+
+            echo "Deployment Berhasil Selesai!"
+
