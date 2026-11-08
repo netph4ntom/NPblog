@@ -20,7 +20,7 @@
 
 ---
 
-## 📖 Tentang NPblog
+## Tentang NPblog
 
 **NPblog** adalah platform publikasi blog editorial yang dirancang dengan estetika minimalis, tipografi bernilai tinggi (*editorial design taste*), dan fokus pada kenyamanan membaca (*reading ergonomics*). 
 
@@ -28,9 +28,9 @@ Dibangun di atas **Laravel 12**, NPblog menyajikan perpaduan antara performa bac
 
 ---
 
-## ✨ Fitur Utama
+## Fitur Utama
 
-### 🌐 Antarmuka Publik
+### Antarmuka Publik
 - **Tipografi & Estetika Editorial**: Tampilan bersih dengan hierarki visual terarah, bebas dari elemen klise (*anti-slop*), berstandar kontras WCAG AA.
 - **Featured Lead Card**: Artikel pertama pada beranda otomatis ditampilkan sebagai kartu sorotan (*lead article*) dengan ringkasan yang proporsional.
 - **Placeholder Duotone Elegan**: Monogram editorial berseni (`NP`) bagi artikel yang belum memiliki unggahan gambar sampul.
@@ -39,7 +39,7 @@ Dibangun di atas **Laravel 12**, NPblog menyajikan perpaduan antara performa bac
 - **Kotak Berbagi Responsif**: Salin tautan satu-klik dengan notifikasi tersalin, serta tombol berbagi langsung ke WhatsApp dan X (Twitter).
 - **Smooth Scroll**: Tombol pill *"Kembali ke Atas"* pada footer.
 
-### 🛡️ Admin Panel & Manajemen Konten (CRUD)
+### Admin Panel & Manajemen Konten (CRUD)
 - **Dashboard Kelola Artikel**: Tabel artikel yang otomatis bertransformasi menjadi **kartu susun vertikal (*stacked touch cards*)** pada perangkat mobile (`< 768px`) tanpa *horizontal scrolling*.
 - **Pembuatan & Pengeditan Artikel**:
   - Live auto-slug generator berbasis judul secara real-time.
@@ -48,14 +48,14 @@ Dibangun di atas **Laravel 12**, NPblog menyajikan perpaduan antara performa bac
 - **Manajemen Profil**: Pengaturan data akun administrator, pembaruan kata sandi, dan proteksi hapus akun dengan modal konfirmasi.
 - **Keamanan Ketat**: Proteksi CSRF, sanitasi input Blade, autentikasi terisolasi, dan penonaktifan registrasi publik terbuka.
 
-### 🚀 CI/CD & Infrastruktur
+### CI/CD & Infrastruktur
 - **100% Automated Test Coverage**: 34 unit & feature tests mencakup otentikasi, CRUD, otorisasi, pencarian, dan profil.
 - **Docker & Podman Ready**: Konfigurasi multi-container siap pakai (PHP 8.2-FPM, Nginx, MySQL 8.0).
 - **GitHub Actions Pipeline**: CI otomatis (pengujian unit & build asset) serta CD otomatis via SSH ke server target.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Komponen | Teknologi |
 |---|---|
@@ -70,7 +70,7 @@ Dibangun di atas **Laravel 12**, NPblog menyajikan perpaduan antara performa bac
 
 ---
 
-## 🚀 Panduan Instalasi & Menjalankan Lokal
+## Panduan Instalasi & Menjalankan Lokal
 
 Pastikan Anda telah memasang **Git**, serta **Docker/Podman** ATAU **PHP 8.2 + Composer + Node.js 20+**.
 
@@ -127,7 +127,7 @@ Aplikasi akan aktif di **`http://127.0.0.1:8000`**.
 
 ---
 
-## 🔐 Kredensial Akun Default
+## Kredensial Akun Default
 
 Setelah menjalankan perintah `php artisan db:seed`, akun administrator berikut siap digunakan:
 
@@ -138,7 +138,7 @@ Setelah menjalankan perintah `php artisan db:seed`, akun administrator berikut s
 
 ---
 
-## 🧪 Menjalankan Automated Tests
+## Menjalankan Automated Tests
 
 Aplikasi dilengkapi test suite komprehensif (34 feature & unit tests). Untuk menjalankannya:
 
@@ -166,7 +166,7 @@ Contoh output:
 
 ---
 
-## 🔄 Otomasi CI/CD (GitHub Actions)
+## Otomasi CI/CD (GitHub Actions)
 
 Project ini dilengkapi workflow CI/CD di `.github/workflows/deploy.yml`:
 
@@ -189,7 +189,7 @@ Tambahkan nilai-nilai berikut di menu **Settings → Secrets and variables → A
 
 ---
 
-## 📁 Struktur Direktori Utama
+## Struktur Direktori Utama
 
 ```text
 npblog-project/
@@ -223,6 +223,6 @@ npblog-project/
 
 ---
 
-## 📄 Lisensi
+## Lisensi
 
 Project ini dirilis di bawah lisensi terbuka [MIT License](LICENSE).
